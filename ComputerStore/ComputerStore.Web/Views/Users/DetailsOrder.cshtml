@@ -1,0 +1,95 @@
+﻿@model ComputerStore.Models.ViewModels.Orders.DetailsOrderVm
+
+@{
+    ViewBag.Title = "DetailsOrder";
+}
+
+
+<h2><strong>Поръчка номрер:</strong> @Html.DisplayFor(modelItem => modelItem.Id) </h2>
+<br />
+
+<h2><strong>Направена на:</strong> @Html.DisplayFor(modelItem => modelItem.OrderDate) </h2>
+
+
+<div class="pull-right">
+    <p><h3 class="text-danger"><strong>Цена на поръчката:</strong> @Html.DisplayFor(modelItem => modelItem.OrderPrice) лв</h3></p>
+
+</div>
+
+
+
+<h3>Адрес за доставка</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Град
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(modelItem => modelItem.DeliveryAddress.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAddress.Streat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAddress.Streat)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAddress.PostCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAddress.PostCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAddress.PhoneNumber)
+
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAddress.PhoneNumber)
+        </dd>
+
+    </dl>
+</div>
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            Brand
+        </th>
+        <th>
+            Model
+        </th>
+        <th>
+            Price
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Products)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+<br />
+
+

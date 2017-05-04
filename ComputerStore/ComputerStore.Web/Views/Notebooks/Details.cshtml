@@ -1,0 +1,148 @@
+﻿@using ComputerStore.Web.Extensions;
+@model ComputerStore.Models.ViewModels.Notebook.DetailsNotebookVm
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<main>
+    <div class="container">
+        <div class="row">
+            <div class="col-12 text">
+
+                <h1 class="display-3">@Html.DisplayFor(model => model.Brand) @Html.DisplayFor(model => model.Model)</h1>
+                <br />
+                @Html.Image(Model.ImageUrl, "not found")
+
+
+                <br />
+                <br />
+                <br />
+                <br />
+                <h4>Описание на Продукта</h4>
+
+                <h5> @Html.DisplayFor(model => model.Description)</h5>
+
+                <br />
+                <br />
+                <br />
+                <br />
+
+
+                <h4>Характеристики</h4>
+                <br />
+
+                <table class="table table-striped product-page-specifications">
+                    <tbody>
+                        <tr>
+                            <td class="col-xs-4 text-muted">Марка:</td>
+                            <td class="col-xs-8">@Html.DisplayFor(model => model.Brand)</td>
+                        </tr>
+                        <tr>
+                            <td class="col-xs-4 text-muted">Модел:</td>
+                            <td class="col-xs-8">@Html.DisplayFor(model => model.Model)</td>
+                        </tr>
+                        <tr>
+                            <td class="col-xs-4 text-muted">Процесор:</td>
+                            <td class="col-xs-8">@Html.DisplayFor(model => model.Processor)</td>
+                        </tr>
+                        <tr>
+                            <td class="col-xs-4 text-muted">РАМ</td>
+                            <td class="col-xs-8">@Html.DisplayFor(model => model.RAM)</td>
+                        </tr>
+                        <tr>
+                            <td class="col-xs-4 text-muted">Капацитет Хард диск</td>
+                            <td class="col-xs-8">@Html.DisplayFor(model => model.Storage) GB</td>
+                        </tr>
+                        <tr>
+                            <td class="col-xs-4 text-muted">Видео Карта</td>
+                            <td class="col-xs-8">@Html.DisplayFor(model => model.VideoGraphic)</td>
+                        </tr>
+                        <tr>
+                            <td class="col-xs-4 text-muted">Четци/Записвачки</td>
+                            <td class="col-xs-8"></td>
+                        </tr>
+                        <tr>
+                            <td class="col-xs-4 text-muted">Размер на екрана</td>
+                            <td class="col-xs-8">@Html.DisplayFor(model => model.DisplaySize) инча</td>
+                        </tr>
+                        <tr>
+                            <td class="col-xs-4 text-muted">Орерационна Система</td>
+                            <td class="col-xs-8">@Html.DisplayFor(model => model.OparationSystem)</td>
+                        </tr>
+                        <tr>
+                            <td class="col-xs-4 text-muted">Размери</td>
+                            <td class="col-xs-8">@Html.DisplayFor(model => model.Dimensions)</td>
+                        </tr>
+                        
+                    </tbody>
+                </table>
+
+
+                <div class="pull-right">
+                    <h4><strong class="text-danger">ЦЕНА: @Html.DisplayFor(modelItem => modelItem.Price) лв.</strong> </h4>
+
+                </div>
+                <br />
+                <br />
+                <br />
+
+                <div>
+
+                    <a class="btn btn-outline-primary" name="back" href="All">Back</a>
+                    <div class="pull-right">
+                        @using (Html.BeginForm("Add", "Orders", FormMethod.Post))
+                        {
+                            <input type="number" value="@Model.Id" name="Id" hidden="hidden" />
+                            <input type="submit" value="Купи" class="btn btn-lg  btn-success" />
+                        }
+                    </div>
+                </div>
+
+                    <br />
+                    <br />
+            </div>
+        </div>
+    </div>
+</main>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.Label("Напиши коментар", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div >
+                @Html.TextAreaFor(model => model.bind.Content, new { @cols = "80", @rows = "4", placeholder = "Напиши твоето мнение за продукта" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Напиши" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+
+
+@Ajax.ActionLink("Покажи коментарите", "AllComments", new { Id = Model.Id },
+      new AjaxOptions()
+      {
+          HttpMethod = "Get",
+          UpdateTargetId = "comment",
+          InsertionMode = InsertionMode.ReplaceWith
+
+      }, new { @class = "btn btn-primary" })
+
+
+<div id="comment">
+
+
+</div>

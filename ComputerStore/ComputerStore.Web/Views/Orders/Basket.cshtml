@@ -1,0 +1,72 @@
+﻿@model ComputerStore.Models.ViewModels.Orders.BasketVm
+
+@{
+    ViewBag.Title = "Basket";
+}
+
+<h2>Basket</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Brand
+        </th>
+        <th>
+            Model
+        </th>
+        <th>
+            Price
+        </th>
+        <th></th>
+    </tr>
+    @if (Model.BuyProductVms != null)
+    {
+        foreach (var item in Model.BuyProductVms)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Brand)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Model)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        @Html.ActionLink("Изтрий", "DeleteItem", new { id = item.Id }, new { @class = "btn btn-info" })
+                    }
+                </td>
+            </tr>
+        }
+    }
+    
+
+</table>
+
+<div class="container">
+    <blockquote class="blockquote-reverse">
+        <p>Цена: @Html.DisplayFor(modelItem => Model.OrderPrice) лв</p>
+
+    </blockquote>
+</div>
+
+<div>
+    @Html.ActionLink("Продължи с Пазаруването", "Index", "Home", null, new { @class = "btn btn-success" }) 
+</div>
+@if (Model.OrderPrice > 0m && Model.BuyProductVms != null)
+{
+    <div class="pull-right">
+        @Html.ActionLink("Избери Адрес за Доставка", "DeliveryAddress", null, new { @class = "btn btn-lg btn-primary" })
+    </div>
+}
+
+
+<br />
+<br />
+<br />
+<br />
+<br />

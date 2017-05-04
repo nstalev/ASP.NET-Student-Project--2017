@@ -1,0 +1,16 @@
+﻿@model ComputerStore.Models.ViewModels.Orders.CountOrdersVM
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Welcome to Store Area</h2>
+
+<br />
+<div class="container">
+    <ul class="list-group">
+        <li class="list-group-item">@Html.ActionLink("Активни поръчки", "ActiveOrders")<span class="badge">@Html.DisplayFor(model => model.ActiveOrders)</span></li>
+        <li class="list-group-item">@Html.ActionLink("Поръчки в Процес", "InProgressOrders")<span class="badge">@Html.DisplayFor(model => model.InProgressOrders)</span></li>
+        <li class="list-group-item">@Html.ActionLink("Завършени поръчки", "CompletedOrders")<span class="badge">@Html.DisplayFor(model => model.CompletedOrders)</span></li>
+    </ul>
+</div>

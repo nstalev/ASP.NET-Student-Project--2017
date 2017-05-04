@@ -1,0 +1,152 @@
+﻿@model ComputerStore.Models.ViewModels.Orders.DetailsStoreOrderVm
+
+@{
+    ViewBag.Title = "DetailsOrder";
+}
+<div class="pull-right">
+    <p>
+        <h3>
+            Статус на поръчката: <strong class="text-danger"> @Html.DisplayFor(modelItem => modelItem.Status)</strong>
+        </h3>
+    </p>
+
+</div>
+
+
+<h2><strong>Поръчка номрер:</strong> @Html.DisplayFor(modelItem => modelItem.Id) </h2>
+<br />
+
+<h3><strong>Направена на:</strong> @Html.DisplayFor(modelItem => modelItem.OrderDate) </h3>
+
+
+<div class="pull-right">
+    <p><h3 class="text-danger"><strong>Цена на поръчката:</strong> @Html.DisplayFor(modelItem => modelItem.OrderPrice) лв</h3></p>
+
+</div>
+
+<br />
+
+<h3>Адрес за доставка</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Град
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(modelItem => modelItem.DeliveryAddress.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAddress.Streat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAddress.Streat)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAddress.PostCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAddress.PostCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DeliveryAddress.PhoneNumber)
+
+
+        <dd>
+            @Html.DisplayFor(model => model.DeliveryAddress.PhoneNumber)
+        </dd>
+
+    </dl>
+</div>
+<br />
+
+
+<h3>Данни на получателя</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            Град
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(modelItem => modelItem.Buyer.Name)
+        </dd>
+
+        <dt>
+            email
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Buyer.Email)
+        </dd>
+
+    </dl>
+</div>
+<br />
+
+<h3>Поръчани продукти</h3>
+
+<table class="table">
+    <tr>
+        <th>
+            Brand
+        </th>
+        <th>
+            Model
+        </th>
+        <th>
+            Price
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.Products)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+<br />
+<br />
+
+<div class="pull-right">
+    <h3>Промяна на Статуса</h3>
+    @if (Model.Status == "Active")
+    {
+        using (Html.BeginForm("ChangeToInProgress", "Store", FormMethod.Post))
+        {
+            <input type="number" value="@Model.Id" name="Id" hidden="hidden" />
+            <input type="submit" value="Change to InProgress" class="btn btn-lg  btn-warning" />
+        }
+    }
+
+    @if (Model.Status == "InProgress")
+    {
+        using (Html.BeginForm("ChangeToCompleted", "Store", FormMethod.Post))
+        {
+            <input type="number" value="@Model.Id" name="Id" hidden="hidden" />
+            <input type="submit" value="Change to Completed" class="btn btn-lg  btn-info" />
+        }
+    }
+</div>
+
+<br />
+

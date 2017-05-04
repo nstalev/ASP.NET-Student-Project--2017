@@ -1,0 +1,23 @@
+﻿@using ComputerStore.Web.Extensions;
+@{
+    ViewBag.Title = "Home Page";
+}
+
+<div>
+    @Html.Image3("https://s-media-cache-ak0.pinimg.com/originals/5f/f9/37/5ff937126ec6b9e65082e7c74c6e8f21.jpg", "not found")
+</div>
+<div>
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+    {
+
+        @Html.ActionLink("Admininstration", "Index", "Admin/Index", null, new { @class = "btn btn-lg btn-danger" })
+      
+    }
+
+    @if (User.Identity.IsAuthenticated && User.IsInRole("Administrator"))
+    {
+
+        @Html.ActionLink("Store", "Index", "Store/Index", null, new { @class = "btn btn-lg btn-danger" })
+
+    }
+</div>

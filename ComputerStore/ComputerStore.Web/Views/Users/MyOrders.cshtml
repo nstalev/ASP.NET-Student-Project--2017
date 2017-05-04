@@ -1,0 +1,35 @@
+﻿@using ComputerStore.Models.ViewModels.Orders
+@model IEnumerable<AllOrdersVm>
+
+@{
+    ViewBag.Title = "MyOrders";
+}
+<br />
+<h2>Моите Поръчки</h2>
+<br />
+
+<div class="container">
+
+    @foreach (var item in Model)
+    {
+        <div class="card col-12 thumbnail" style="width:450px; height:100px; border:1px solid; margin-top: 25px">
+            <p>Номер на поръчката: <strong>@Html.DisplayFor(modelItem => item.Id)</strong></p>
+            <p>Дата: <strong>@Html.DisplayFor(modelItem => item.OrderDate)</strong></p>
+
+            <div class="pull-left">
+                @Html.ActionLink("Details", "DetailsOrder", new { id = item.Id }, new { @class = "btn btn-info" }) 
+
+            </div>
+
+            <div class="pull-right">
+                <p><strong>Цена:</strong> @Html.DisplayFor(modelItem => item.OrderPrice) лв</p>
+
+            </div>
+        </div>
+
+    }
+</div>
+
+
+@Html.ActionLink("Back", "Profile")
+

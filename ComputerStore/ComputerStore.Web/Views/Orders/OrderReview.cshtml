@@ -1,0 +1,113 @@
+﻿@model ComputerStore.Models.ViewModels.Orders.OrderReview
+
+@{
+    ViewBag.Title = "OrderReview";
+}
+
+<h2>Вашата поръчка</h2>
+<br />
+<h3>Адрес за доставка</h3>
+
+<div>
+<hr />
+<dl class="dl-horizontal">
+    <dt>
+        @Html.DisplayNameFor(model => model.DeliveryAddress.City)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.DeliveryAddress.City)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.DeliveryAddress.Streat)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.DeliveryAddress.Streat)
+    </dd>
+    <dt>
+        @Html.DisplayNameFor(model => model.DeliveryAddress.PostCode)
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.DeliveryAddress.PostCode)
+    </dd>
+
+    <dt>
+        @Html.DisplayNameFor(model => model.DeliveryAddress.PhoneNumber)
+
+
+    <dd>
+        @Html.DisplayFor(model => model.DeliveryAddress.PhoneNumber)
+    </dd>
+
+</dl>
+</div>
+
+
+
+
+
+<table class="table">
+    <tr>
+        <th>
+            Brand
+        </th>
+        <th>
+            Model
+        </th>
+        <th>
+            Price
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.BuyProductVms)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Brand)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Model)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+
+        </tr>
+    }
+
+</table>
+
+<br />
+
+
+<div class="container">
+    <blockquote class="blockquote-reverse">
+        <p>Цена: @Html.DisplayFor(modelItem => Model.OrderPrice) лв</p>
+
+    </blockquote>
+</div>
+
+
+@if (Model.BuyProductVms !=null && Model.DeliveryAddress !=null && Model.OrderPrice >0)
+{
+    <div class="pull-right">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="number" value="@Model.DeliveryAddress.Id" name="AddressId" hidden="hidden" />
+                <input type="submit" value="Потвърди" class="btn btn-lg btn-success" />
+            </div>
+        }
+    </div>
+}
+
+<br />
+<br />
+<br />

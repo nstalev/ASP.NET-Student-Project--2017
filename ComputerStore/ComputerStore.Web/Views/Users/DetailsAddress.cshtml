@@ -1,0 +1,50 @@
+﻿@model ComputerStore.Models.ViewModels.Addresses.DetailsAddressVm
+
+@{
+    ViewBag.Title = "DetailsAddress";
+}
+
+<h2>DetailsAddress</h2>
+
+<div>
+    <h4>DetailsAddressVm</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.City)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.City)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Streat)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Streat)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PostCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PostCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+    @Html.ActionLink("Back to List", "MyAddresses")
+</p>

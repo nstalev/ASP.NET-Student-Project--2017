@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Computer Store", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Лаптопи", "All", "Notebooks", new { area = "" }, new { @class = "navbar-brand" })</li>
+                    <li>@Html.ActionLink("Деск Компютри", "All", "DeskComputers", new { area = "" }, new { @class = "navbar-brand" })</li>
+
+                </ul>
+
+                <button class="btn btn-danger">@Html.ActionLink("Кошница", "Basket", "Orders", new { area = "" }, new { @class = "navbar-brand" })</button>
+
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+
+
+
+    @RenderSection("LeftMenu", required: false)
+
+
+
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer id="site_footer" class="clearFlot">
+
+            <div class="container">
+                <div class="row">
+                    <div class="span4">
+                        <div class="col-sm-6 col-md-4">
+                            <ul>
+                                <li>
+                                    <a href="@Url.Action("About", "Info")">
+                                        <span class="leftside"> За Нас</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Services", "Info")">
+                                        <span class="leftside"> Услуги</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Contacts", "Info")">
+                                        <p>Контакти <span class="glyphicon glyphicon-envelope"></span></p>
+                                    </a>
+                                </li>
+                              
+
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="span4">
+                        <div class="col-sm-6 col-md-4">
+                            <ul>
+                                <li>
+                                    <a href="@Url.Action("Payment", "Info")">
+                                        <span class="leftside">Начин на плащане</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Shiping", "Info")">
+                                        <span class="leftside">Доставка</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("GeneralTerms", "Info")">
+                                        <span class="leftside"> Общи Условия</span>
+                                    </a>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="span4">
+                        <div class="col-sm-6 col-md-4">
+                            <ul>
+                                <li>
+                                    <a href="@Url.Action("#", "#")">
+                                        <img alt="лого на Facebook" height="20" src="https://www.seeklogo.net/wp-content/uploads/2013/11/facebook-flat-vector-logo.png" width="20">
+                                        Харесай ни
+                                    </a>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+        </footer>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

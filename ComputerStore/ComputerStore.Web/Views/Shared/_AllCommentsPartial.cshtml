@@ -1,0 +1,24 @@
+﻿@model ComputerStore.Models.ViewModels.Comments.AllCommentVm
+
+@{
+    ViewBag.Title = "_AllCommentsPartial";
+}
+
+
+<div class="container">
+
+    @foreach (var item in Model.AllComments)
+    {
+        <div class="card col-12 thumbnail" style="width:750px; height:100px; border:1px solid; margin-top: 25px">
+            <p>Коментар от: <strong>@Html.DisplayFor(modelItem => item.PersonName)</strong></p>
+            <p class="pull-right">Дата: <strong>@Html.DisplayFor(modelItem => item.Date)</strong></p>
+
+
+            <div class="pull-left">
+                <p> @Html.DisplayFor(modelItem => item.Content)</p>
+
+            </div>
+        </div>
+
+    }
+</div>

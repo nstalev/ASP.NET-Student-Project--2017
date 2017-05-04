@@ -1,0 +1,16 @@
+﻿@using ComputerStore.Web.Extensions;
+@model IEnumerable<ComputerStore.Models.ViewModels.Notebook.AllNotebooksVm>
+
+@{
+    ViewBag.Title = "Brand";
+}
+
+@section LeftMenu{
+
+    @RenderPage("~/Views/Shared/ProductNav.cshtml")
+
+
+    <div id="content">
+        @Html.Partial("_NotebooksPartial", Model)
+    </div>
+}

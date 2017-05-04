@@ -1,0 +1,53 @@
+﻿@model ComputerStore.Models.ViewModels.Orders.SecondStepDelAddressVm
+
+@{
+    ViewBag.Title = "DeliveryAddress";
+}
+
+
+<h2>Избери Адрес за доставка</h2>
+
+
+@Html.ActionLink("Нов Адрес", "AddAddress", "Orders", null, new { @class = "btn btn-info" })
+
+
+<table class="table">
+    <tr>
+        <th>
+            City
+        </th>
+        <th>
+            Streat
+        </th>
+        <th>
+            PhoneNumber
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.AddressesVm)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.City)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Streat)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PhoneNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Промени", "Edit", "Orders", new { id = item.Id }) 
+
+                <div class="pull-right">
+                    @Html.ActionLink("Избери", "OrderReview", new { id = item.Id }, new { @class = "btn btn-lg btn-succes" })
+                    
+                </div>
+               
+
+            </td>
+        </tr>
+    }
+
+</table>

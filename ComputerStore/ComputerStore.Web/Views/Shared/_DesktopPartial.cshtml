@@ -1,0 +1,37 @@
+﻿@using ComputerStore.Web.Extensions;
+@model IEnumerable<ComputerStore.Models.ViewModels.DeskComputers.AllDescCompVM>
+
+<div class="container">
+    <div class="row">
+
+        @foreach (var item in Model)
+            {
+            <div class="span4">
+                <div class="col-sm-6 col-md-4">
+
+                    <div class="thumbnail">
+                        @Html.Image2(item.ImageUrl, "not found")
+                        <div class="caption">
+                            <h3>@Html.DisplayFor(modelItem => item.Brand) @Html.DisplayFor(modelItem => item.Model) </h3>
+                            <p><Strong>Процесор: </Strong> @Html.DisplayFor(modelItem => item.Processor)</p>
+                            <p><Strong>Рам Памет: </Strong> @Html.DisplayFor(modelItem => item.RAM)</p>
+                            <p><Strong>Памет:</Strong> @Html.DisplayFor(modelItem => item.Storage)</p>
+
+
+                            <p>
+                                <a> @Html.ActionLink("Details", "Details", new { Id = item.Id }, new { @class = "btn btn-primary" })</a>
+
+                                <a class="pull-right"><strong class="text-danger">ЦЕНА: @Html.DisplayFor(modelItem => item.Price) лв.</strong> </a>
+
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        }
+    </div>
+</div>
+
