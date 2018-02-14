@@ -98,8 +98,14 @@ namespace ComputerStore.Service
             Customer customer = Context.Customers.FirstOrDefault(cust => cust.User.UserName == userName);
             CurrentOrder currentOrder = Context.CurrentOrders.FirstOrDefault(order => order.Buyer.Id == customer.Id);
 
-            currentOrder.Products.Remove(item);
+
             currentOrder.OrderPrice -= item.Price;
+            currentOrder.Products.Remove(item);
+
+            if (currentOrder.Products.Count() < 1 )
+            {
+                Context.CurrentOrders.Remove(currentOrder);
+            }
             Context.SaveChanges();
 
         }

@@ -53,31 +53,32 @@ namespace ComputerStore.Web.Controllers
         }
 
 
-        [HttpGet]
-        [Route("DeleteItem/{productId}")]
-        public ActionResult DeleteItem(int productId)
-        {
+        //[HttpGet]
+        //[Route("DeleteItem/{productId}")]
+        //public ActionResult DeleteItem(int productId)
+        //{
 
-            DeleteItemVm vm = service.GetDeleteItemVm(productId);
+        //    DeleteItemVm vm = service.GetDeleteItemVm(productId);
 
-                 return View(vm);
-        }
+        //         return View(vm);
+        //}
 
 
         [HttpPost]
         [Route("DeleteItem/{productId}")]
         public ActionResult DeleteItem([Bind(Include = "productId")]DeleteItemrBm bind)
         {
+            string userName = User.Identity.Name;
+
             if (this.ModelState.IsValid)
             {
-                string userName = this.User.Identity.Name;
 
                 service.DeleteProductFromBasket(bind, userName);
 
-                return RedirectToAction("Basket", "Orders");
             }
+            BasketVm vm = service.GetBasketVm(userName);
 
-            return this.View();
+            return this.PartialView("_BasketProductsPartial", vm);
         }
 
 
