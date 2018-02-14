@@ -85,16 +85,15 @@
 
                 </div>
                 <br />
+                <div id="divCheckbox" style="display: none;"></div>
                 <br />
-                <br />
-
                 <div>
 
                     <a class="btn btn-outline-primary" name="back" href="All">Back</a>
                     <div class="pull-right">
                         @using (Html.BeginForm("Add", "Orders", FormMethod.Post))
                         {
-                            <input type="number" value="@Model.Id" name="Id" hidden="hidden" />
+                            <input type="number" id="orderId" value="@Model.Id" name="Id" hidden="hidden" />
                             <input type="submit" value="Купи" class="btn btn-lg  btn-success" />
                         }
                     </div>
@@ -130,18 +129,18 @@
 }
 
 
+@section scripts {
+    <script>
+        $(document).ready(
+            function () {
+                $("#comment").load("AllComments/" + $('#orderId').val())
+            }
+        )
+    </script>
 
-@Ajax.ActionLink("Покажи коментарите", "AllComments", new { Id = Model.Id },
-      new AjaxOptions()
-      {
-          HttpMethod = "Get",
-          UpdateTargetId = "comment",
-          InsertionMode = InsertionMode.ReplaceWith
-
-      }, new { @class = "btn btn-primary" })
+}
 
 
 <div id="comment">
-
 
 </div>

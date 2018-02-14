@@ -76,7 +76,7 @@
                             <td class="col-xs-4 text-muted">Размери</td>
                             <td class="col-xs-8">@Html.DisplayFor(model => model.Dimensions)</td>
                         </tr>
-                        
+
                     </tbody>
                 </table>
 
@@ -95,14 +95,14 @@
                     <div class="pull-right">
                         @using (Html.BeginForm("Add", "Orders", FormMethod.Post))
                         {
-                            <input type="number" value="@Model.Id" name="Id" hidden="hidden" />
+                            <input type="number" id="orderId" value="@Model.Id" name="Id" hidden="hidden" />
                             <input type="submit" value="Купи" class="btn btn-lg  btn-success" />
                         }
                     </div>
                 </div>
 
-                    <br />
-                    <br />
+                <br />
+                <br />
             </div>
         </div>
     </div>
@@ -118,7 +118,7 @@
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.Label("Напиши коментар", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div >
+            <div>
                 @Html.TextAreaFor(model => model.bind.Content, new { @cols = "80", @rows = "4", placeholder = "Напиши твоето мнение за продукта" })
             </div>
         </div>
@@ -132,15 +132,16 @@
 
 
 
-@Ajax.ActionLink("Покажи коментарите", "AllComments", new { Id = Model.Id },
-      new AjaxOptions()
-      {
-          HttpMethod = "Get",
-          UpdateTargetId = "comment",
-          InsertionMode = InsertionMode.ReplaceWith
+@section scripts {
+    <script>
+        $(document).ready(
+            function () {
+                $("#comment").load("AllComments/" + $('#orderId').val())
+            }
+        )
+    </script>
 
-      }, new { @class = "btn btn-primary" })
-
+}
 
 <div id="comment">
 
