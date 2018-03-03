@@ -1,9 +1,10 @@
 ﻿using ComputerStore.Models.EntityModels.Products;
+using ComputerStore.Models.Interfaces;
 using System.Collections.Generic;
 
 namespace ComputerStore.Models.EntityModels.Orders
 {
-    public class CurrentOrder
+    public class CurrentOrder : IOrder
     {
         public CurrentOrder()
         {

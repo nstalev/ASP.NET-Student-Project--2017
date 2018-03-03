@@ -1,12 +1,13 @@
 ﻿using ComputerStore.Models.EntityModels.Addresses;
 using ComputerStore.Models.EntityModels.Products;
 using ComputerStore.Models.Enums;
+using ComputerStore.Models.Interfaces;
 using System;
 using System.Collections.Generic;
 
 namespace ComputerStore.Models.EntityModels.Orders
 {
-    public class Order
+    public class Order: IOrder
     {
 
         public Order()

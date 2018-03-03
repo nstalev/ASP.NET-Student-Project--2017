@@ -7,6 +7,7 @@ namespace ComputerStore.Models.EntityModels
         public int Id { get; set; }
 
         public string PersonName { get; set; }
+
         public DateTime Date { get; set; }
 
         public string Content { get; set; }

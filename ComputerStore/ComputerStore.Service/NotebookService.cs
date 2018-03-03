@@ -1,17 +1,12 @@
 ﻿using AutoMapper;
 using ComputerStore.Models.BindingModels.Comment;
-using ComputerStore.Models.BindingModels.Orders;
 using ComputerStore.Models.EntityModels;
-using ComputerStore.Models.EntityModels.Orders;
 using ComputerStore.Models.EntityModels.Products;
 using ComputerStore.Models.ViewModels.Comments;
 using ComputerStore.Models.ViewModels.Notebook;
-using ComputerStore.Models.ViewModels.Orders;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace ComputerStore.Service
 {

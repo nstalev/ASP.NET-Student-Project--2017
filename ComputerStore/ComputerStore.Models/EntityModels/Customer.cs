@@ -1,12 +1,13 @@
 ﻿using ComputerStore.Models.EntityModels.Addresses;
 using ComputerStore.Models.EntityModels.Orders;
+using ComputerStore.Models.Interfaces;
 using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ComputerStore.Models.EntityModels
 {
-    public class Customer
+    public class Customer : ICustomer
     {
 
         public Customer()

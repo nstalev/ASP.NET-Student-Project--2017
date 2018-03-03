@@ -1,9 +1,10 @@
 ﻿using ComputerStore.Models.EntityModels.Orders;
+using ComputerStore.Models.Interfaces;
 using System.Collections.Generic;
 
 namespace ComputerStore.Models.EntityModels.Addresses
 {
-    public class OrderAddress
+    public class OrderAddress : IAddress
     {
         public OrderAddress()
         {

@@ -1,9 +1,7 @@
 ﻿using System.Linq;
 using ComputerStore.Models.ViewModels.User;
 using ComputerStore.Models.EntityModels;
-using ComputerStore.Models.EntityModels.Products;
 using ComputerStore.Models.BindingModels.Orders;
-using System;
 using ComputerStore.Models.EntityModels.Addresses;
 using AutoMapper;
 using ComputerStore.Models.ViewModels.Addresses;

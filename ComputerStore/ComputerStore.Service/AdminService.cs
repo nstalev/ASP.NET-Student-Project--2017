@@ -2,7 +2,6 @@
 using ComputerStore.Models.EntityModels.Products;
 using AutoMapper;
 using ComputerStore.Models.BindingModels.DeskComputers;
-using System;
 using ComputerStore.Models.ViewModels.Orders;
 using System.Collections.Generic;
 using ComputerStore.Models.EntityModels.Orders;
@@ -10,7 +9,6 @@ using System.Linq;
 using ComputerStore.Models.EntityModels.Addresses;
 using ComputerStore.Models.EntityModels;
 using ComputerStore.Models.ViewModels.Addresses;
-using ComputerStore.Models.ViewModels.User;
 
 namespace ComputerStore.Service
 {
